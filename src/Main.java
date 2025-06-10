@@ -1,13 +1,27 @@
 
+import java.math.BigDecimal;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Scanner;
+
+import org.gestore.eventi.Concerto;
 import org.gestore.eventi.Evento;
 
 public class Main {
     public static void main(String[] args) throws Exception {
 
         Scanner scanner = new Scanner(System.in);
+
+        LocalDate data = LocalDate.of(2029, 9, 22);
+
+        LocalTime ora = LocalTime.of(10, 30);
+
+        BigDecimal prezzo = new BigDecimal("150.1125137");
+
+        Concerto concerto = new Concerto("namles", data, 100, ora, prezzo);
+
+        System.out.println(concerto);
 
         // creazione dell'evento
 
@@ -25,9 +39,7 @@ public class Main {
 
             int eventSeats = Integer.parseInt(scanner.nextLine());
 
-            Evento evento = new Evento(eventTitle, eventDate, eventSeats);
-
-            System.out.println(evento);
+            Evento evento = new Evento(eventTitle, eventDate, eventSeats);            
 
             /*
              * ----------------------------------------------------------------------------
@@ -80,25 +92,20 @@ public class Main {
 
         } catch (DateTimeException eccezione) {
 
-            System.out.println("problema: " + eccezione.getMessage());
+            System.out.println("problema temporale: " + eccezione.getMessage());
 
         } catch (RuntimeException eccezione){
 
-            System.out.println(eccezione.getMessage());
+            System.out.println("Problema: " + eccezione.getMessage());
 
-        }
-
-        // ***************************************************************** */
-
-        // LocalDate data = LocalDate.of(2029, 9, 22);
-
-        // Evento sus = new Evento("namles", data, 10);
-
-        // System.out.println(sus);
-
+        }      
+     
         scanner.close();
 
     }
+
+
+    
 
     private static boolean yesOrNo(String chose) throws RuntimeException {
 

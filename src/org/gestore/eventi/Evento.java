@@ -42,7 +42,7 @@ public class Evento {
 
     public void setDate(LocalDate date) throws DateTimeException {
 
-        if (date.isAfter(LocalDate.now())) {
+        if (date.isAfter(LocalDate.now()) || date.equals(LocalDate.now())) {
 
             this.date = date;
 
@@ -101,29 +101,33 @@ public class Evento {
 
            System.out.println("Prenotazione effettuata");
 
-        } else {
+        } else  if (date.isBefore(LocalDate.now())) {
 
-            // messaggio di errore pienone
+            throw new DateTimeException("Stai cercando i prenotare un evento passato");
 
-        }
+        } else if (reservedSeats >= seating) {
+
+            throw new RuntimeException("non ci sono più posti disponibili");
+            
+        }   
 
     }
 
-    public void disdici() {
+    public void disdici() throws DateTimeException {
 
         if (reservedSeats > 0 && date.isAfter(LocalDate.now())) {
 
-            reservedSeats--;
+            reservedSeats--;            
 
-            // disdetta gestita come errore
+        } else  if (date.isBefore(LocalDate.now())) {
 
-        } else {
+            throw new DateTimeException("Stai cercando i disdire un evento passato");
 
-            // messaggio di errore pienone
+        } else if (reservedSeats <= 0) {
 
-        }
-
-        // va aggiunto il messaggio per la data
+            throw new RuntimeException("non puoi disdire ulteriri posti");
+            
+        }        
 
     }
 
@@ -136,7 +140,7 @@ public class Evento {
     @Override
     public String toString() {
 
-        return getDate() + " " + getTitle();
+        return getDate() + "-" + getTitle();
 
     }
 
