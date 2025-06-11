@@ -1,6 +1,7 @@
 package org.gestore.eventi;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,9 +16,9 @@ public class Concerto extends Evento {
     public Concerto(String title, LocalDate date, int seating, LocalTime ora, BigDecimal prezzo) {
         super(title, date, seating);
 
-        this.ora = ora;
+        setTime(ora);
 
-        this.prezzo = prezzo;
+        setPrice(prezzo);
         
     }
 
@@ -27,7 +28,7 @@ public class Concerto extends Evento {
 
             this.ora = ora;
 
-        } else if (ora.equals(LocalTime.now()) || ora.isBefore(ora)) {
+        } else {
 
             throw new DateTimeException ("ora precendete a quella corrente");
             
@@ -59,14 +60,17 @@ public class Concerto extends Evento {
 
     public String getPrice (){
 
-        return this.prezzo.setScale(2).toString();
+        BigDecimal finalePrice = this.prezzo.setScale(2,RoundingMode.HALF_UP);
+
+        return finalePrice.toString();
 
     }    
 
     @Override
     public String toString() {
-        
-        return getDate() + "-" + getTime() + "-" + getTitle() + "-" + getPrice() + "€";
+
+        return getDate() + "-" + getTime() + "-" + getTitle() + "-" + getPrice() + " EUR";
+
     }
 
     

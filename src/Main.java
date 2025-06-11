@@ -13,16 +13,6 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        LocalDate data = LocalDate.of(2029, 9, 22);
-
-        LocalTime ora = LocalTime.of(10, 30);
-
-        BigDecimal prezzo = new BigDecimal("150.1125137");
-
-        Concerto concerto = new Concerto("namles", data, 100, ora, prezzo);
-
-        System.out.println(concerto);
-
         // creazione dell'evento
 
         try {
@@ -121,7 +111,7 @@ public class Main {
 
         } else {
 
-            throw new RuntimeException("la scelta fatta non è corretta, digita o si o no");
+            throw new RuntimeException("la scelta fatta non è corretta, digita si o no");
 
         }
 

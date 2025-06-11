@@ -6,45 +6,45 @@ import java.time.format.DateTimeFormatter;
 
 public class Evento {
 
-    private String title;
+    private String titolo;
 
-    private LocalDate date;
+    private LocalDate data;
 
-    private int seating;
+    private int postiTotali;
 
-    private int reservedSeats;
+    private int postiPrenotati;
 
-    public Evento(String title, LocalDate date, int seating) {
+    public Evento(String titolo, LocalDate data, int postiTotali) {
 
-        setTitle(title);
+        setTitle(titolo);
 
-        setDate(date);
+        setDate(data);
 
-        setSeating(seating);
+        setSeating (postiTotali);
 
-        reservedSeats = 0;
+        postiPrenotati = 0;
 
     }
 
-    public void setTitle(String title) {
+    public void setTitle(String titolo) {
 
-        if (title.length() > 0) {
-            this.title = title;
+        if (titolo.length() > 0) {
+            this.titolo = titolo;
         }
 
     }
 
     public String getTitle() {
 
-        return title = Character.toUpperCase(title.charAt(0)) + title.substring(1).toLowerCase();
+        return titolo = Character.toUpperCase(titolo.charAt(0)) + titolo.substring(1).toLowerCase();
 
     }
 
-    public void setDate(LocalDate date) throws DateTimeException {
+    public void setDate(LocalDate data) throws DateTimeException {
 
-        if (date.isAfter(LocalDate.now()) || date.equals(LocalDate.now())) {
+        if (data.isAfter(LocalDate.now()) || data.equals(LocalDate.now())) {
 
-            this.date = date;
+            this.data = data;
 
         } else {
 
@@ -58,14 +58,14 @@ public class Evento {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        return this.date.format(formatter);
+        return this.data.format(formatter);
     }
 
-    private void setSeating(int seating) throws RuntimeException {
+    private void setSeating(int postiTotali) throws RuntimeException {
 
-        if (seating >= 0) {
+        if  (postiTotali >= 0) {
 
-            this.seating = seating;
+            this.postiTotali = postiTotali;
 
         } else {
 
@@ -77,35 +77,35 @@ public class Evento {
 
     public int getSeating() {
 
-        return this.seating;
+        return this.postiTotali;
 
     }
 
-    private void setReservedSeats(int reservedSeats) {
+    private void setpostiPrenotati(int postiPrenotati) {
 
-        this.reservedSeats = reservedSeats;
+        this.postiPrenotati = postiPrenotati;
 
     }
 
-    public int getReservedSeats() {
+    public int getpostiPrenotati() {
 
-        return this.reservedSeats;
+        return this.postiPrenotati;
 
     }
 
     public void prenota() {
 
-        if (reservedSeats < seating && date.isAfter(LocalDate.now())) {
+        if (postiPrenotati < postiTotali && data.isAfter(LocalDate.now())) {
 
-            reservedSeats++;
+            postiPrenotati++;
 
            System.out.println("Prenotazione effettuata");
 
-        } else  if (date.isBefore(LocalDate.now())) {
+        } else  if (data.isBefore(LocalDate.now())) {
 
             throw new DateTimeException("Stai cercando i prenotare un evento passato");
 
-        } else if (reservedSeats >= seating) {
+        } else if (postiPrenotati >= postiTotali) {
 
             throw new RuntimeException("non ci sono più posti disponibili");
             
@@ -115,15 +115,15 @@ public class Evento {
 
     public void disdici() throws DateTimeException {
 
-        if (reservedSeats > 0 && date.isAfter(LocalDate.now())) {
+        if (postiPrenotati > 0 && data.isAfter(LocalDate.now())) {
 
-            reservedSeats--;            
+            postiPrenotati--;            
 
-        } else  if (date.isBefore(LocalDate.now())) {
+        } else  if (data.isBefore(LocalDate.now())) {
 
             throw new DateTimeException("Stai cercando i disdire un evento passato");
 
-        } else if (reservedSeats <= 0) {
+        } else if (postiPrenotati <= 0) {
 
             throw new RuntimeException("non puoi disdire ulteriri posti");
             
@@ -133,7 +133,7 @@ public class Evento {
 
     public String getAnvaibleSeats(){
 
-        return "I posti prenotati sono: " + Integer.toString(this.reservedSeats) + ", mentre quelli ancora disponibili sono: " + Integer.toString(this.seating - this.reservedSeats);
+        return "I posti prenotati sono: " + Integer.toString(this.postiPrenotati) + ", mentre quelli ancora disponibili sono: " + Integer.toString(this.postiTotali - this.postiPrenotati);
 
     }
 
