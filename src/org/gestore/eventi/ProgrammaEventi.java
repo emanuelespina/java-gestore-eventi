@@ -1,19 +1,19 @@
 package org.gestore.eventi;
-
-import java.text.CollationElementIterator;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 public class ProgrammaEventi {
 
+    // variabili di istanza
+
     private String titolo;
 
     private List <Evento> eventi;
-    
+
+    // costruttore    
     
     public ProgrammaEventi(String titolo) {
 
@@ -22,6 +22,8 @@ public class ProgrammaEventi {
         eventi = new ArrayList <Evento> ();
 
     }
+
+    // gettere e setter
 
     public void setTitle(String titolo) {
 
@@ -37,12 +39,15 @@ public class ProgrammaEventi {
 
     }
 
+    // metodo per aggiungere un evento alla lista 
+
     public void addEvent (Evento evento){
 
         eventi.add(evento);
 
     }
 
+    // metodo per ricercare uno o più eventi in base alla data richiesta 
 
     public List <Evento> getEventsForDate (LocalDate date){
         
@@ -64,17 +69,23 @@ public class ProgrammaEventi {
 
     }
 
+    // metodo che restituisce quanti eventi sono in lista 
+
     public int getNumberOfEvents (){
 
         return eventi.size();
 
     }
 
+    // metodo che cancella tutti gli eventi della lista 
+
     public void resetEvents (){
 
         eventi.removeAll(eventi);
 
     }
+
+    // metodo che restituisce una lista ordinata degli eventi in base alla data 
 
     public List<Evento> getOrderEvents (){ 
         
@@ -83,8 +94,5 @@ public class ProgrammaEventi {
         return eventi;
 
     }
-
-
-
 
 }

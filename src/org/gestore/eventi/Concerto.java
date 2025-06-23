@@ -9,9 +9,13 @@ import java.time.format.DateTimeFormatter;
 
 public class Concerto extends Evento {
 
+    // variabili di istanza
+
     private LocalTime ora;
 
     private BigDecimal prezzo;
+    
+    // costruttore
 
     public Concerto(String title, LocalDate date, int seating, LocalTime ora, BigDecimal prezzo) {
         super(title, date, seating);
@@ -21,6 +25,8 @@ public class Concerto extends Evento {
         setPrice(prezzo);
         
     }
+
+    // gettere e setter
 
     public void setTime (LocalTime ora) throws DateTimeException {
 
@@ -64,7 +70,9 @@ public class Concerto extends Evento {
 
         return finalePrice.toString();
 
-    }    
+    }   
+    
+    // metodo per stapare il concerto come una stringa che contenga la data, l'ora, il titolo e il prezzo 
 
     @Override
     public String toString() {

@@ -8,25 +8,6 @@ import org.gestore.eventi.ProgrammaEventi;
 public class Main {
     public static void main(String[] args) throws Exception {
 
-
-        ProgrammaEventi tour1 = new ProgrammaEventi("tourEminem");
-        
-        tour1.addEvent(new Evento("concertoMilano", LocalDate.of(2030, 10, 10), 300));
-
-        tour1.addEvent(new Evento("concertoMilano2", LocalDate.of(2030, 10, 10), 300));
-
-        tour1.addEvent(new Evento("concertoRoma", LocalDate.of(2030, 12, 10), 350));
-
-        tour1.addEvent(new Evento("concertoComo", LocalDate.of(2030, 8, 10), 250));
-
-        tour1.addEvent(new Evento("concertoMilano", LocalDate.of(2031, 10, 10), 310));
-
-        System.out.println(tour1.getNumberOfEvents());
-
-        System.out.println(tour1.getEventsForDate(LocalDate.of(2030, 10, 10)));
-
-        System.out.println(tour1.getOrderEvents());
-
         //--------------------------------------------------------------------------------
 
         Scanner scanner = new Scanner(System.in);
@@ -53,7 +34,7 @@ public class Main {
         * ----------------------------------------------------------------------------
         */
 
-        // prenotazioni / disdette
+        // prenotazioni 
 
             System.out.println("Vuoi prenotare dei posti");
 
@@ -74,6 +55,8 @@ public class Main {
                 }               
                 
             }
+
+            // disdette
 
             System.out.println(evento + " " + evento.getAnvaibleSeats());
 
@@ -99,6 +82,7 @@ public class Main {
 
             System.out.println(evento + " " + evento.getAnvaibleSeats());            
 
+            // possibili errori 
 
         } catch (DateTimeException eccezione) {
 
@@ -114,8 +98,7 @@ public class Main {
 
     }
 
-
-    
+    // metodo per capire se l'utente risponde sì o no 
 
     private static boolean yesOrNo(String chose) throws RuntimeException {
 

@@ -6,6 +6,8 @@ import java.time.format.DateTimeFormatter;
 
 public class Evento implements Comparable <Object> {
 
+    // variabili si istanza
+
     private String titolo;
 
     private LocalDate data;
@@ -13,6 +15,8 @@ public class Evento implements Comparable <Object> {
     private int postiTotali;
 
     private int postiPrenotati;
+
+    // costruttore
       
 
     public Evento(String titolo, LocalDate data, int postiTotali) {
@@ -26,6 +30,8 @@ public class Evento implements Comparable <Object> {
         this.postiPrenotati = 0;
 
     }
+
+    // getter e setter
 
     public void setTitle(String titolo) {
 
@@ -94,6 +100,8 @@ public class Evento implements Comparable <Object> {
 
     }
 
+    // metodo per prenotare un posto
+
     public void prenota() {
 
         if (postiPrenotati < postiTotali && data.isAfter(LocalDate.now())) {
@@ -111,6 +119,8 @@ public class Evento implements Comparable <Object> {
         }   
 
     }
+
+    // metodo per disdire un posto
 
     public void disdici() throws DateTimeException {
 
@@ -130,11 +140,15 @@ public class Evento implements Comparable <Object> {
 
     }
 
+    // metodo che restituisce quanti posti sono ancora disponibili e quanti sono occupati
+
     public String getAnvaibleSeats(){
 
         return "I posti prenotati sono: " + Integer.toString(this.postiPrenotati) + ", mentre quelli ancora disponibili sono: " + Integer.toString(this.postiTotali - this.postiPrenotati);
 
     }
+
+    // metodo per stapare l'evento come una stringa che contenga la data e il titolo
 
     @Override
     public String toString() {
@@ -143,6 +157,7 @@ public class Evento implements Comparable <Object> {
 
     }
 
+    // metodo grazie al quale l'arrayList compare le date degli eventi 
 
     @Override
 
