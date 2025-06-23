@@ -13,6 +13,7 @@ public class Evento {
     private int postiTotali;
 
     private int postiPrenotati;
+      
 
     public Evento(String titolo, LocalDate data, int postiTotali) {
 
@@ -22,7 +23,7 @@ public class Evento {
 
         setSeating (postiTotali);
 
-        postiPrenotati = 0;
+        this.postiPrenotati = 0;
 
     }
 
@@ -61,7 +62,7 @@ public class Evento {
         return this.data.format(formatter);
     }
 
-    private void setSeating(int postiTotali) throws RuntimeException {
+    public void setSeating(int postiTotali) throws RuntimeException {
 
         if  (postiTotali >= 0) {
 
@@ -97,9 +98,7 @@ public class Evento {
 
         if (postiPrenotati < postiTotali && data.isAfter(LocalDate.now())) {
 
-            postiPrenotati++;
-
-           System.out.println("Prenotazione effettuata");
+            postiPrenotati++;           
 
         } else  if (data.isBefore(LocalDate.now())) {
 

@@ -1,11 +1,7 @@
 
-import java.math.BigDecimal;
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Scanner;
-
-import org.gestore.eventi.Concerto;
 import org.gestore.eventi.Evento;
 
 public class Main {
@@ -31,9 +27,11 @@ public class Main {
 
             Evento evento = new Evento(eventTitle, eventDate, eventSeats);            
 
-            /*
-             * ----------------------------------------------------------------------------
-             */
+        /*
+        * ----------------------------------------------------------------------------
+        */
+
+        // prenotazioni / disdette
 
             System.out.println("Vuoi prenotare dei posti");
 
