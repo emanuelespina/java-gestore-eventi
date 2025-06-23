@@ -25,6 +25,8 @@ public class Main {
 
         System.out.println(tour1.getEventsForDate(LocalDate.of(2030, 10, 10)));
 
+        System.out.println(tour1.getOrderEvents());
+
         //--------------------------------------------------------------------------------
 
         Scanner scanner = new Scanner(System.in);

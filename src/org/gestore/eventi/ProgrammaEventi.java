@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class ProgrammaEventi {
@@ -42,7 +43,8 @@ public class ProgrammaEventi {
 
     }
 
-    public List getEventsForDate (LocalDate date){
+
+    public List <Evento> getEventsForDate (LocalDate date){
         
         List <Evento> eventsForDate = new ArrayList<>();
 
@@ -74,12 +76,10 @@ public class ProgrammaEventi {
 
     }
 
-    public List getOrderEvents (){
-
+    public List<Evento> getOrderEvents (){ 
         
-
-        
-
+        Collections.sort(eventi);
+       
         return eventi;
 
     }

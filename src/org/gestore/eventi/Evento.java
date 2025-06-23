@@ -4,7 +4,7 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Evento {
+public class Evento implements Comparable <Object> {
 
     private String titolo;
 
@@ -140,6 +140,17 @@ public class Evento {
     public String toString() {
 
         return getDate() + "-" + getTitle();
+
+    }
+
+
+    @Override
+
+    public int compareTo(Object o) {
+
+        Evento c = (Evento) o;
+
+        return this.data.compareTo(c.data);
 
     }
 
