@@ -3,9 +3,29 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Scanner;
 import org.gestore.eventi.Evento;
+import org.gestore.eventi.ProgrammaEventi;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+
+
+        ProgrammaEventi tour1 = new ProgrammaEventi("tourEminem");
+        
+        tour1.addEvent(new Evento("concertoMilano", LocalDate.of(2030, 10, 10), 300));
+
+        tour1.addEvent(new Evento("concertoMilano2", LocalDate.of(2030, 10, 10), 300));
+
+        tour1.addEvent(new Evento("concertoRoma", LocalDate.of(2030, 12, 10), 350));
+
+        tour1.addEvent(new Evento("concertoComo", LocalDate.of(2030, 8, 10), 250));
+
+        tour1.addEvent(new Evento("concertoMilano", LocalDate.of(2031, 10, 10), 310));
+
+        System.out.println(tour1.getNumberOfEvents());
+
+        System.out.println(tour1.getEventsForDate(LocalDate.of(2030, 10, 10)));
+
+        //--------------------------------------------------------------------------------
 
         Scanner scanner = new Scanner(System.in);
 

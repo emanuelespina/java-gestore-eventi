@@ -2,7 +2,9 @@ package org.gestore.eventi;
 
 import java.text.CollationElementIterator;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class ProgrammaEventi {
@@ -42,7 +44,19 @@ public class ProgrammaEventi {
 
     public List getEventsForDate (LocalDate date){
         
-        List <Evento> eventsForDate = eventi;
+        List <Evento> eventsForDate = new ArrayList<>();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        for (Evento evento : eventi) {
+
+            if (evento.getDate().equals(date.format(formatter))) {
+
+                eventsForDate.add(evento);
+                
+            }
+            
+        }
 
         return eventsForDate;
 
@@ -61,6 +75,8 @@ public class ProgrammaEventi {
     }
 
     public List getOrderEvents (){
+
+        
 
         
 
