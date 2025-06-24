@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ProgrammaEventi {
@@ -19,7 +20,7 @@ public class ProgrammaEventi {
 
         setTitle(titolo);
 
-        eventi = new ArrayList <Evento> ();
+        eventi = new ArrayList <> ();
 
     }
 
@@ -35,8 +36,12 @@ public class ProgrammaEventi {
 
     public String getTitle() {
 
-        return titolo = Character.toUpperCase(titolo.charAt(0)) + titolo.substring(1).toLowerCase();
+        return titolo; //
 
+    }
+    public String getHumanTitle() {
+
+        return Character.toUpperCase(titolo.charAt(0)) + titolo.substring(1).toLowerCase();
     }
 
     // metodo per aggiungere un evento alla lista 
@@ -53,11 +58,9 @@ public class ProgrammaEventi {
         
         List <Evento> eventsForDate = new ArrayList<>();
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
         for (Evento evento : eventi) {
 
-            if (evento.getDate().equals(date.format(formatter))) {
+            if (evento.getDate().equals(date)) {
 
                 eventsForDate.add(evento);
                 
@@ -81,8 +84,8 @@ public class ProgrammaEventi {
 
     public void resetEvents (){
 
-        eventi.removeAll(eventi);
-
+        // eventi.removeAll(eventi);
+        eventi.clear();
     }
 
     // metodo che restituisce una lista ordinata degli eventi in base alla data 
@@ -90,6 +93,8 @@ public class ProgrammaEventi {
     public List<Evento> getOrderEvents (){ 
         
         Collections.sort(eventi);
+
+        eventi.sort((e1, e2) -> e1.getDate().compareTo(e2.getDate())); // labmda function
        
         return eventi;
 

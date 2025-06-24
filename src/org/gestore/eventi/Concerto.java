@@ -77,7 +77,8 @@ public class Concerto extends Evento {
     @Override
     public String toString() {
 
-        return getDate() + "-" + getTime() + "-" + getTitle() + "-" + getPrice() + " EUR";
+        //return getDate() + "-" + getTime() + "-" + getTitle() + "-" + getPrice() + " EUR";
+        return super.toString() + getTime() +  getPrice() + " EUR";
 
     }
 

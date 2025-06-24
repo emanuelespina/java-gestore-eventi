@@ -61,7 +61,11 @@ public class Evento implements Comparable <Object> {
 
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
+
+        return data;
+    }
+    public String getHumanDate() {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -102,11 +106,11 @@ public class Evento implements Comparable <Object> {
 
     // metodo per prenotare un posto
 
-    public void prenota() {
+    public void prenota(int nPosti) {
 
         if (postiPrenotati < postiTotali && data.isAfter(LocalDate.now())) {
 
-            postiPrenotati++;           
+            postiPrenotati+= nPosti;       
 
         } else  if (data.isBefore(LocalDate.now())) {
 

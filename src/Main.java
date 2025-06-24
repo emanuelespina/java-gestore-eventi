@@ -44,15 +44,15 @@ public class Main {
 
                 int numberOfReservationSeats = Integer.parseInt(scanner.nextLine());
 
-                int i = 0;
+                // int i = 0;
 
-                while (i < numberOfReservationSeats) {
+                // while (i < numberOfReservationSeats) {
 
-                    evento.prenota();
+                    evento.prenota(numberOfReservationSeats);
 
-                    i++;
+                //     i++;
 
-                }               
+                // }               
                 
             }
 
